@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LokalAssignment" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorSecondary">@color/secondary_blue</item>
+    </style>
+
+    <style name="Theme.LokalAssignment" parent="Base.Theme.LokalAssignment" />
+
+    <style name="DefaultTextStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/sourcesanspro_semibold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
