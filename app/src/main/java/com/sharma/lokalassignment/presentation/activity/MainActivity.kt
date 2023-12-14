@@ -1,6 +1,7 @@
 package com.sharma.lokalassignment.presentation.activity
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.sharma.lokalassignment.R
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         LoaderHelper.Builder(this)
         addFragment(AllProductsFragment(), null)
+
+        addBackPressListener()
     }
 
     fun addFragment(fragment: Fragment, productId: Int?) {
@@ -39,10 +42,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        val count = supportFragmentManager.backStackEntryCount
-        if (count == 1) finish()
-        else super.onBackPressed()
+    private fun addBackPressListener() {
+        onBackPressedDispatcher.addCallback(this, object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // If a fragment is visible other than the `AllProductsFragment` (the first fragment)
+                // then remove that fragment first
+                val count = supportFragmentManager.backStackEntryCount
+                if (count == 1) finish()
+                else removeFragment()
+            }
+        })
     }
 
     companion object {
